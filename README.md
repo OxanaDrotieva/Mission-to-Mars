@@ -26,7 +26,7 @@ The purpose of this project is to gather data about Mission to Mars from all ove
 
 5. In my [scraping.py](scraping.py) file created functions that collect mars data with a click of the button.
 6. In my [app.py](app.py) file saved all the collected data to my mongoDB
-7. With my [index.html file](../templates/index.html) created a webpage that displays all the collected data and customized it to be mobile-responsive.
+7. With my [index.html file](./templates/index.html) created a webpage that displays all the collected data and customized it to be mobile-responsive.
 
 
 
