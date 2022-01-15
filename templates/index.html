@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <!--Add Jumbotron to Header-->
+    <div class="bg-light py-5 rounded-3 text-center">
+      <h1>Mission to Mars</h1>
+      <!--Add a button to activate scraping script-->
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+
+    <!-- Mars News -->
+    <div class="row" id="mars-news">
+      <div class="col-md-12">
+        <div class="media">
+          <div class="media-body">
+            <h2>Latest Mars News</h2>
+            <h4 class="media-heading">{{ mars.news_title }}</h4>
+            <p>{{ mars.news_paragraph }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- Featured Image and Facts Table-->
+    <div class="row" id="mars-featured-image">
+      <div class="col-md-7">
+        <h2>Featured Mars Image</h2>
+        <img 
+          src="{{ mars.featured_image }}" 
+          class="img-fluid" 
+          alt="Responsive image"
+        />
+      </div>
+      <!-- Mars Facts -->
+      <!-- <div id="mars-facts"> -->
+      <div class="col-md-5 pr-3">
+          <h4>Mars Facts</h4>
+          {{ mars.facts | safe}}
+      </div>
+      <!-- </div> -->
+    </div>
+
+    <!-- Retrieve the hemispheres' img_url and title  -->
+    <div>
+      <h2 class="bg-light py-5 rounded-3 text-center">Mars Hemispheres</h2>
+    </div>
+    
+    <div id="hemisphere-images">
+      <ul class="row list-group list-group-horizontal">
+          {% for hemisphere in mars.hemisphere_image_urls.hemispheres_data %}
+          <li class="col-md-3 border px-2 list-group-item">
+            <p class="lead mt-2">
+              {{hemisphere.title}}
+            </p>
+            <article class="product_pod">
+              <a href="{{hemisphere.img_url}}" class="image-container">
+                <img class="img-fluid" src="{{hemisphere.img_url}}" height="400">
+              </a>
+            </article>
+          </li>
+          {%endfor%}
+        </ul>
+      </div>  
+    </div>
+  </div>
+</body>
+</html>
+
